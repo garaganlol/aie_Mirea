@@ -169,7 +169,7 @@ def top_categories(
 
     return result
 
-
+HIGH_CARD_THRESHOLD = 50
 def compute_quality_flags(summary: DatasetSummary, missing_df: pd.DataFrame) -> Dict[str, Any]:
     """
     Простейшие эвристики «качества» данных:

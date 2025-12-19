@@ -14,7 +14,9 @@ from .core import (
     missing_table,
     summarize_dataset,
     top_categories,
+    HIGH_CARD_THRESHOLD,
 )
+
 from .viz import (
     plot_correlation_heatmap,
     plot_missing_matrix,
@@ -136,8 +138,23 @@ def report(
         f.write(f"- Слишком много колонок: **{quality_flags['too_many_columns']}**\n")
         f.write(f"- Слишком много пропусков: **{quality_flags['too_many_missing']}**\n")
         f.write(f"- Константные колонки: **{quality_flags['has_constant_columns']}**\n")
+
+        if quality_flags['has_constant_columns']:
+            f.write(f"  - Список константных колонок: {', '.join(quality_flags['constant_columns'])}\n")
+
         f.write(f"- Высокая кардинальность: **{quality_flags['has_high_cardinality_categoricals']}**\n")
-        f.write(f"- Дубликаты ID: **{quality_flags['has_suspicious_id_duplicates']}**\n\n")
+
+        if quality_flags['has_high_cardinality_categoricals']:
+            f.write(
+                f"  - Список колонок с высокой кардинальностью (>{HIGH_CARD_THRESHOLD}): {', '.join(quality_flags['high_cardinality_columns'])}\n")
+
+        f.write(f"- Дубликаты ID: **{quality_flags['has_suspicious_id_duplicates']}**\n")
+
+        if quality_flags['has_suspicious_id_duplicates']:
+            f.write(
+                f"  - Список колонок с подозрительными дубликатами ID: {', '.join(quality_flags['id_duplicate_columns'])}\n")
+
+        f.write("\n")
 
         # Проблемные колонки по пропускам
         f.write("## Колонки с пропусками выше порога\n\n")
@@ -148,30 +165,6 @@ def report(
             f.write("\n")
         else:
             f.write("Нет колонок, превышающих порог.\n\n")
-
-        f.write("## Колонки\n\n")
-        f.write("См. файл `summary.csv`.\n\n")
-
-        f.write("## Пропуски\n\n")
-        if missing_df.empty:
-            f.write("Пропусков нет.\n\n")
-        else:
-            f.write("См. файлы `missing.csv` и `missing_matrix.png`.\n\n")
-
-        f.write("## Корреляция числовых признаков\n\n")
-        if corr_df.empty:
-            f.write("Недостаточно числовых колонок.\n\n")
-        else:
-            f.write("См. `correlation.csv` и `correlation_heatmap.png`.\n\n")
-
-        f.write("## Категориальные признаки\n\n")
-        if not top_cats:
-            f.write("Нет категориальных признаков.\n\n")
-        else:
-            f.write(f"Top-{top_k_categories} значений см. в `top_categories/`.\n\n")
-
-        f.write("## Гистограммы\n\n")
-        f.write(f"Максимум колонок: {max_hist_columns}\n\n")
 
     # 6. Построение графиков
     plot_histograms_per_column(df, out_root, max_columns=max_hist_columns)
