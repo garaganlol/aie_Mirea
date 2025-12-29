@@ -1,0 +1,19 @@
+{
+  "best_model_label": "Random Forest Claasifier",
+  "test_metrics": {
+    "accuracy": 0.8375,
+    "f1": 0.5788336933045356,
+    "roc_auc": 0.8906234617722377,
+    "model": "Random Forest Claasifier"
+  },
+  "search_summary": {
+    "best_params": {
+      "max_depth": 7,
+      "max_features": "sqrt",
+      "min_samples_leaf": 1,
+      "random_state": 42
+    },
+    "best_cv_roc_auc": 0.8345833333333333
+  },
+  "random_state": 42
+}
