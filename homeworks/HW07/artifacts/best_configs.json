@@ -1,0 +1,41 @@
+{
+  "Dataset_01": {
+    "algorithm": "DBSCAN",
+    "parameters": {
+      "eps": 0.13688614049480202,
+      "min_samples": 5
+    },
+    "n_clusters": 5,
+    "silhouette": 0.658730848441102,
+    "stability": {
+      "mean_ari": 0.0007690775104947627,
+      "std_ari": 0.005397366150565076
+    }
+  },
+  "Dataset_02": {
+    "algorithm": "DBSCAN",
+    "parameters": {
+      "eps": 0.04741959953014622,
+      "min_samples": 5
+    },
+    "n_clusters": 4,
+    "silhouette": 0.9441618921252152,
+    "stability": {
+      "mean_ari": 5.441575976367414e-05,
+      "std_ari": 0.00016861314962236812
+    }
+  },
+  "Dataset_03": {
+    "algorithm": "DBSCAN",
+    "parameters": {
+      "eps": 0.06925555234762452,
+      "min_samples": 5
+    },
+    "n_clusters": 4,
+    "silhouette": 0.7556822871466431,
+    "stability": {
+      "mean_ari": 4.8206335348118834e-05,
+      "std_ari": 0.00032281815227994137
+    }
+  }
+}
