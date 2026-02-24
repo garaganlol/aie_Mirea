@@ -1,0 +1,5 @@
+experiment_id,dataset,seed,model_summary,dropout,batchnorm,epochs_trained,best_val_accuracy,best_val_loss
+E0,CIFAR10,42,"(256,)",0.0,False,20,0.5328,1.5377039623260498
+E1,CIFAR10,42,"(512, 256)",0.0,False,20,0.5461,1.6873380058288574
+E2,CIFAR10,42,"(512, 256)",0.3,False,20,0.5555,1.3031016435623168
+E3,CIFAR10,42,"(512, 256)",0.0,True,20,0.5505,1.3087368295669555
