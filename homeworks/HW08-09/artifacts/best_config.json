@@ -1,0 +1,11 @@
+{
+    "dataset": "CIFAR10",
+    "seed": 42,
+    "hidden_sizes": [
+        1024,
+        512
+    ],
+    "dropout": 0.3,
+    "optimizer": "Adam",
+    "lr": 0.001
+}
