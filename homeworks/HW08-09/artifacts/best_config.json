@@ -5,7 +5,8 @@
         1024,
         512
     ],
-    "dropout": 0.3,
+    "dropout": 0.0,
+    "batchnorm": true,
     "optimizer": "Adam",
     "lr": 0.001
 }
