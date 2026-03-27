@@ -1,0 +1,6 @@
+experiment_id,task,dataset,seed,best_val_accuracy,test_accuracy,precision,recall,mean_iou
+C1,classification,STL10,42,0.488,0.847875,,,
+C2,classification,STL10,42,0.474,0.847875,,,
+C3,classification,STL10,42,0.779,0.847875,,,
+C4,classification,STL10,42,0.843,0.847875,,,
+V1,segmentation,OxfordIIITPet,42,,,,,0.27698034544785816
